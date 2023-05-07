@@ -8,10 +8,37 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import stylesheet from "~/tailwind.css";
+import Footer from "@/components/Footer";
+import Navigation from "@/components/Navigation";
+import SkipLinks from "@/components/SkipLinks";
+
+import stylesheet from "@/tailwind.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
+];
+
+const navLinks = [
+  {
+    path: "/",
+    name: "Home",
+  },
+  {
+    path: "/about",
+    name: "About",
+  },
+  {
+    path: "/work",
+    name: "Work",
+  },
+  {
+    path: "/uses",
+    name: "Uses",
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+  },
 ];
 
 export default function App() {
@@ -20,11 +47,17 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="noindex, nofollow" />
         <Meta />
         <Links />
       </head>
       <body>
-        <Outlet />
+        <SkipLinks />
+        <Navigation links={navLinks} />
+        <main id="content" tabIndex={-1} className="focus:outline-none">
+          <Outlet />
+        </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
