@@ -6,11 +6,7 @@ interface NavigationProps {
 
 export default function Navigation({ links }: NavigationProps) {
   return (
-    <nav
-      id="navigation"
-      tabIndex={-1}
-      className="container my-4 focus:outline-none"
-    >
+    <nav id="navigation" tabIndex={-1} className="focus:outline-none">
       <ul className="flex justify-end gap-4">
         {links.map((link) => (
           <li key={link.name}>

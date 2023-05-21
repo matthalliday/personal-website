@@ -3,6 +3,7 @@ import {
   Links,
   LiveReload,
   Meta,
+  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -19,10 +20,6 @@ export const links: LinksFunction = () => [
 ];
 
 const navLinks = [
-  {
-    path: "/",
-    name: "Home",
-  },
   {
     path: "/about",
     name: "About",
@@ -53,8 +50,13 @@ export default function App() {
       </head>
       <body>
         <SkipLinks />
-        <Navigation links={navLinks} />
-        <main id="content" tabIndex={-1} className="focus:outline-none">
+        <header className="container flex items-baseline justify-between pb-6 pt-8">
+          <NavLink to="/" className="text-2xl font-semibold">
+            Matt Halliday
+          </NavLink>
+          <Navigation links={navLinks} />
+        </header>
+        <main id="content" tabIndex={-1} className="py-24 focus:outline-none">
           <Outlet />
         </main>
         <Footer />
