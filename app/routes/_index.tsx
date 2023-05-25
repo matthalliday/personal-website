@@ -1,14 +1,5 @@
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
-import type { V2_MetaFunction } from "@remix-run/cloudflare";
 import { Link } from "@remix-run/react";
-
-export const meta: V2_MetaFunction = () => {
-  return [
-    {
-      title: "Matt Halliday is a web developer based in Waterloo, Canada.",
-    },
-  ];
-};
 
 export default function Index() {
   return (

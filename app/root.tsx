@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/cloudflare";
+import type { LinksFunction, V2_MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
   LiveReload,
@@ -18,6 +18,23 @@ import stylesheet from "@/tailwind.css";
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
+
+export const meta: V2_MetaFunction = ({ location }) => {
+  const title = "Matt Halliday is a web developer based in Waterloo, Canada.";
+  const description =
+    "I'm Matt Halliday, a designer-turned-developer based in Waterloo, Canada with 15+ years experience building things for the web.";
+  const currentUrl = `https://www.matthalliday.dev${location.pathname}`;
+
+  return [
+    { title: title },
+    { name: "description", content: description },
+    { tagName: "link", rel: "canonical", href: currentUrl },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: currentUrl },
+  ];
+};
 
 const navLinks = [
   {
