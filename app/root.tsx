@@ -1,4 +1,4 @@
-import type { LinksFunction, V2_MetaFunction } from "@remix-run/cloudflare";
+import type { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
   LiveReload,
@@ -19,7 +19,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-export const meta: V2_MetaFunction = ({ location }) => {
+export const meta: MetaFunction = ({ location }) => {
   const title = "Matt Halliday is a web developer based in Waterloo, Canada.";
   const description =
     "I'm Matt Halliday, a designer-turned-developer based in Waterloo, Canada with 15+ years experience building things for the web.";
