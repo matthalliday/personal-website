@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
+import type { HeadersFunction, LinksFunction, MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
   LiveReload,
@@ -14,6 +14,10 @@ import Navigation from "@/components/Navigation";
 import SkipLinks from "@/components/SkipLinks";
 
 import stylesheet from "@/tailwind.css";
+
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=3600, stale-while-revalidate=900, stale-if-error=86400"
+})
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
