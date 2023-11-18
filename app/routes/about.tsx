@@ -3,19 +3,9 @@ import PageLayout from "@/components/PageLayout";
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 
-// Define the bindings associated with our Function
-// so that they are typed
-interface Env {
-  CONTENT_PREVIEW: KVNamespace;
-}
-
 export async function loader({ context }: LoaderFunctionArgs) {
-  const env = context.env as Env;
-
-  console.log("context", context);
-  console.log("env", context.env);
-
-  const markdown = await env.CONTENT_PREVIEW.get("about");
+  const storage = context.CONTENT_PREVIEW as KVNamespace;
+  const markdown = await storage.get("about");
 
   if (!markdown) throw new Response(null, { status: 404 });
 
