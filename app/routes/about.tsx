@@ -11,6 +11,10 @@ interface Env {
 
 export async function loader({ context }: LoaderFunctionArgs) {
   const env = context.env as Env;
+
+  console.log("context", context);
+  console.log("env", context.env);
+
   const markdown = await env.CONTENT_PREVIEW.get("about");
 
   if (!markdown) throw new Response(null, { status: 404 });
