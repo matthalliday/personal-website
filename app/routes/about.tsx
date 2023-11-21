@@ -4,7 +4,7 @@ import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 
 export async function loader({ context }: LoaderFunctionArgs) {
-  const storage = context.CONTENT_PREVIEW as KVNamespace;
+  const storage = context.CONTENT as KVNamespace;
   const markdown = await storage.get("about");
 
   if (!markdown) throw new Response(null, { status: 404 });
