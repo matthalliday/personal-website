@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="container mt-2 flex justify-end">
       <p className="text-sm">
-        &copy; 2023 Matt Halliday. Built with{" "}
+        &copy; 2024 Matt Halliday. Built with{" "}
         <ExternalLink url="https://remix.run/">Remix</ExternalLink>,{" "}
         <ExternalLink url="https://github.com/matthalliday/personal-website">
           Github
