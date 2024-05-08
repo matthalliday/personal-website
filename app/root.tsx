@@ -1,7 +1,6 @@
-import type { HeadersFunction, LinksFunction, MetaFunction } from "@remix-run/cloudflare";
+import type { HeadersFunction, MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
-  LiveReload,
   Meta,
   NavLink,
   Outlet,
@@ -9,19 +8,16 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import Footer from "@/components/Footer";
-import Navigation from "@/components/Navigation";
-import SkipLinks from "@/components/SkipLinks";
+import "./tailwind.css";
 
-import stylesheet from "@/tailwind.css";
+import Footer from "~/components/Footer";
+import Navigation from "~/components/Navigation";
+import SkipLinks from "~/components/SkipLinks";
 
 export const headers: HeadersFunction = () => ({
-  "Cache-Control": "public, max-age=3600, stale-while-revalidate=900, stale-if-error=86400"
-})
-
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
+  "Cache-Control":
+    "public, max-age=3600, stale-while-revalidate=900, stale-if-error=86400",
+});
 
 export const meta: MetaFunction = ({ location }) => {
   const title = "Matt Halliday is a web developer based in Waterloo, Canada.";
@@ -59,7 +55,7 @@ const navLinks = [
   },
 ];
 
-export default function App() {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -78,13 +74,16 @@ export default function App() {
           <Navigation links={navLinks} />
         </header>
         <main id="content" tabIndex={-1} className="py-24 focus:outline-none">
-          <Outlet />
+          {children}
         </main>
         <Footer />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
+}
+
+export default function App() {
+  return <Outlet />;
 }

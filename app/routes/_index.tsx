@@ -1,4 +1,3 @@
-import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { Link } from "@remix-run/react";
 
 export default function Index() {
@@ -19,7 +18,6 @@ export default function Index() {
             </p>
             <Link to="/about" className="flex items-center gap-2 underline">
               Learn more about me
-              <ArrowSmallRightIcon className="h-6 w-6" />
             </Link>
           </div>
         </div>
