@@ -1,8 +1,4 @@
-import type {
-  HeadersFunction,
-  LinksFunction,
-  MetaFunction,
-} from "@remix-run/cloudflare";
+import type { HeadersFunction, MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
   Meta,
@@ -12,20 +8,16 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import "~/tailwind.css";
+
 import Footer from "~/components/Footer";
 import Navigation from "~/components/Navigation";
 import SkipLinks from "~/components/SkipLinks";
-
-import stylesheet from "~/tailwind.css?url";
 
 export const headers: HeadersFunction = () => ({
   "Cache-Control":
     "public, max-age=3600, stale-while-revalidate=900, stale-if-error=86400",
 });
-
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
 
 export const meta: MetaFunction = ({ location }) => {
   const title = "Matt Halliday is a web developer based in Waterloo, Canada.";
